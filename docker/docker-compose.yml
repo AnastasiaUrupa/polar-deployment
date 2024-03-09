@@ -21,9 +21,10 @@ services:
     ports:
       - "5432:5432"
     environment:
-     - POSTGRES_USER=user
-     - POSTGRES_PASSWORD=password
-     - POSTGRES_DB=polardb_catalog
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - ./postgresql/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   config-service:
     image: "config-service"
